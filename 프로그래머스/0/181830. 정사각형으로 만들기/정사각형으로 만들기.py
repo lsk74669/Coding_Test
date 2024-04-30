@@ -1,12 +1,12 @@
 def solution(arr):
-    num_rows = len(arr)
-    num_cols = len(arr[0])
+    answer = arr.copy()
+    print(answer[0])
     
-    if num_rows > num_cols:
-        for i in range(num_rows):
-            arr[i].extend([0] * (num_rows - num_cols))
-    elif num_cols > num_rows:
-        for i in range(num_cols - num_rows):
-            arr.append([0] * num_cols)
-    
-    return arr
+    if len(answer[0]) > len(answer[1]):
+        for i in range(len(answer[0])):
+            answer[i].append(0)
+    elif len(answer[0]) < len(answer[1]):
+        for i in range(len(answer[1])):
+            answer.append(0)
+        
+    return answer
