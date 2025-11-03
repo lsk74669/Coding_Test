@@ -1,15 +1,14 @@
 def solution(s):
     stack = []
-    for word in s:
+    for c in s:
         if len(stack) == 0:
-            stack.append(word)
+            stack.append(c)
         else:
-            if stack[-1] == word:
+            if c == stack[-1]:
                 stack.pop()
             else:
-                stack.append(word)
-    if len(stack) == 0:
+                stack.append(c)
+    if not stack:
         return 1
     else:
         return 0
-
