@@ -1,14 +1,13 @@
-from collections import defaultdict
-
 def solution(participant, completion):
-    participant_dict = defaultdict(int)
+    participant_dict = dict()
+    for part in participant:
+        participant_dict[part] = participant_dict.get(part, 0) + 1
     
-    for p in participant:
-        participant_dict[p] += 1
+    for comp in completion:
+        if comp in participant_dict:
+            participant_dict[comp] -= 1
     
-    for c in completion:
-        participant_dict[c] -= 1
-        if participant_dict[c] == 0:
-            del participant_dict[c]
-    
-    return list(participant_dict.keys())[0]
+    for part in participant_dict:
+        if participant_dict[part] == 1:
+            return part
+    return 0
